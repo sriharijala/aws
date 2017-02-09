@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.amazonaws.samples</groupId>
-    <artifactId>aws-java-sample</artifactId>
-    <version>1.0</version>
+    <artifactId>aws-java-lambda1</artifactId>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>aws-java-sample</name>
@@ -20,6 +20,30 @@
             <artifactId>aws-java-sdk</artifactId>
             <version>1.9.6</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-log4j -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-lambda-java-log4j</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
+		<dependency>
+	      <groupId>com.amazonaws</groupId>
+	      <artifactId>aws-lambda-java-core</artifactId>
+	      <version>1.1.0</version>
+	    </dependency>    
+	    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-events -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-lambda-java-events</artifactId>
+		    <version>1.3.0</version>
+		</dependency>
+	    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-s3</artifactId>
+		    <version>1.11.86</version>
+		</dependency>
+	      
     </dependencies>
 
     <build>
@@ -44,6 +68,23 @@
                     <mainClass>com.amazonaws.samples.S3Sample</mainClass>
                 </configuration>
             </plugin>
+            <!-- any other plugins -->
+		      <plugin>
+		        <artifactId>maven-assembly-plugin</artifactId>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>single</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		        <configuration>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
+		        </configuration>
+		      </plugin>
         </plugins>
     </build>
 </project>
