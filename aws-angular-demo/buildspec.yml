@@ -41,7 +41,7 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
+    - 'aws-angular-demo/**/*'
     - base-directory: '${BUILD_FOLDER}/${APP_NAME}'
   discard-paths: no
 
