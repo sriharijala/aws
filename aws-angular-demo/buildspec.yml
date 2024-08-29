@@ -28,6 +28,7 @@ phases:
     commands:
       - echo Starting build
       - echo Build started on `date`
+      - cd ${APP_NAME}
       - ng build --configuration ${BUILD_ENV} --verbose
     finally:
       - echo This always runs even if the install command fails
