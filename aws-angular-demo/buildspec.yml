@@ -19,6 +19,8 @@ phases:
     commands:
       - echo Installing npm dependencies
       - cd ${APP_NAME}
+      - pwd
+      - ls
       - npm install
       - npm install -g @angular/cli  
       - echo ng version
@@ -28,9 +30,6 @@ phases:
     commands:
       - echo Starting build
       - echo Build started on `date`
-      - pwd
-      - ls
-      - cd ${APP_NAME}
       - ng build --configuration ${BUILD_ENV} --verbose
     finally:
       - echo This always runs even if the install command fails
