@@ -1,0 +1,47 @@
+version: 0.2
+
+env:
+  variables:
+    CACHE_CONTROL: '86400'
+    S3_BUCKET_NAME: "sjala-aws-angular-demo"
+    BUILD_FOLDER: 'dist'
+    APP_NAME: 'aws-angular-demo'
+    BUILD_ENV: 'production'
+  
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo Preparing to deploy App
+  pre_build:
+    commands:
+      - echo Installing npm dependencies
+      - npm install
+      - npm install -g @angular/cli  
+      - echo ng version
+    finally:
+      - echo This always runs even if the login command fails 
+  build:
+    commands:
+      - echo Starting build
+      - echo Build started on `date`
+      - ng build -configuration ${BUILD_ENV} --verbose
+    finally:
+      - echo This always runs even if the install command fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Clearing Bucker phase...
+      - aws s3 rm s3://{S3_BUCKET_NAME} --recursive
+      - echi Copying the files to S3 bucket 
+      - aws s3 sync ./${BUILD_FOLDER}/${APP_NAME} s3://{S3_BUCKET_NAME} --delete
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - '**/*'
+    - base-directory: '${BUILD_FOLDER}/${APP_NAME}'
+  discard-paths: no
+
