@@ -35,7 +35,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Clearing Bucker phase...
-      - aws s3 rm s3://{S3_BUCKET_NAME} --recursive
+      - aws s3 rm s3://${S3_BUCKET_NAME} --recursive
       - echi Copying the files to S3 bucket 
       - aws s3 sync ./${BUILD_FOLDER}/${APP_NAME} s3://${S3_BUCKET_NAME} --delete
       - echo Build completed on `date`
