@@ -4,7 +4,7 @@ env:
   variables:
     CACHE_CONTROL: '86400'
     S3_BUCKET_NAME: "sjala-aws-angular-demo"
-    BUILD_FOLDER: 'dist'
+    BUILD_FOLDER: 'dist/browser'
     APP_NAME: 'aws-angular-demo'
     BUILD_ENV: 'production'
   
@@ -45,6 +45,6 @@ phases:
 artifacts:
   files:
       - '**/*'
-  base-directory: '${BUILD_FOLDER}/${APP_NAME}/browser'
+  base-directory: '${BUILD_FOLDER}/${APP_NAME}'
   discard-paths: no
 
