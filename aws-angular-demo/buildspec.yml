@@ -45,6 +45,6 @@ phases:
 artifacts:
   files:
       - '**/*'
-  base-directory: '${BUILD_FOLDER}/${APP_NAME}'
+  base-directory: '${BUILD_FOLDER}/${APP_NAME}/browser'
   discard-paths: no
 
