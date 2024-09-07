@@ -1,0 +1,5 @@
+bucket_prefix = "sjala-devops-directive-web-app-data"
+domain        = "sjala.sjala.devopsdeployed.com"
+db_name       = "mydb"
+db_user       = "foo"
+# db_pass = "foobarbaz"
